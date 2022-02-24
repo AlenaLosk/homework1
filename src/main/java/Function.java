@@ -8,11 +8,9 @@ public class Function {
         } else {
             int[] array = {0, 1, 0};
             for (int i = 2; i <= number; i++) {
-                for(int j = 2; j < 3; j++) {
-                    array[j] = array[j - 1] + array[j - 2];
-                    array[j - 2] = array[j - 1];
-                    array[j - 1] = array[j];
-                }
+                    array[2] = array[1] + array[0];
+                    array[0] = array[1];
+                    array[1] = array[2];
             }
             return array[2];
         }
