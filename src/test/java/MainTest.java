@@ -58,16 +58,4 @@ public class MainTest {
         assertEquals(expectedResult,
                 main.fib3(number));
     }
-
-    @Test
-    public void testFib4() {
-        assertEquals(expectedResult,
-                Function.fib4(number));
-    }
-
-    @Test
-    public void testFib5() {
-        assertEquals(expectedResult,
-                Function.fib5(number));
-    }
 }
