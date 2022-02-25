@@ -1,7 +1,13 @@
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
+import static java.lang.Math.*;
+import static java.lang.Math.sqrt;
+
 public class Main {
 
     //version 1 - recursion
-    public static int fib1(int number) {
+    public static long fib1(long number) {
         if (number <= 1) {
             return number;
         } else {
@@ -10,13 +16,13 @@ public class Main {
     }
 
     //version 2 - cycle without memory optimization
-    public static int fib2(int number) {
-        int result = 0;
+    public static long fib2(long number) {
+        long result = 0;
         if (number <= 1) {
              result = number;
         } else {
-            int a = 0;
-            int b = 1;
+            long a = 0;
+            long b = 1;
             for (int i = 2; i <= number; i++) {
                 result = a + b;
                 if (i == number) {
@@ -31,17 +37,23 @@ public class Main {
     }
 
     //version 3 - cycle with memory optimization
-    public static int fib3(int number) {
+    public static long fib3(long number) {
         if (number <= 1) {
             return number;
         } else {
-            int a = 0;
-            int b = 1;
+            long a = 0;
+            long b = 1;
             for (int i = 2; i < number; i++) {
                 b += a;
                 a = b - a;
             }
-            return a + b ;
+            return a + b;
         }
     }
+
+    //version 5 - using the Binet formula (на больших величинах теряется точность)
+    public static long fib5(long number) {
+        return round(pow((1 + sqrt(5))/2, number)/sqrt(5));
+    }
+
 }
