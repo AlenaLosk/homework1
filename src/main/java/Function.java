@@ -1,22 +1,24 @@
-import java.lang.reflect.Array;
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Arrays;
-
-import static java.lang.Math.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Function {
-    //version 4 - with array
+    //version 4 - with ArrayList
+    private static List<BigInteger> list = new ArrayList<>();
+
+    static {
+        list.add(new BigInteger("0"));
+        list.add(new BigInteger("1"));
+    }
+
     public static BigInteger fib4(int number) {
-        if (number <= 1) {
-            return new BigInteger(String.valueOf(number));
-        } else {
-            BigInteger[] array = {new BigInteger("0"), new BigInteger("1")};
-            for (int i = 2; i < number; i++) {
-                array[1] = array[1].add(array[0]);
-                array[0] = array[1].subtract(array[0]);
+        if (number < 0) {
+            throw new IllegalArgumentException("Fibonacci calculation is only supported for positive numbers");
+        } else if (number >= list.size()) {
+            for (int i = list.size(); i <= number; i++) {
+                list.add(list.get(i - 1).add(list.get(i - 2)));
             }
-            return array[0].add(array[1]);
         }
+        return list.get(number);
     }
 }

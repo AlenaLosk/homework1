@@ -1,14 +1,12 @@
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 import static java.lang.Math.*;
-import static java.lang.Math.sqrt;
 
 public class Main {
 
     //version 1 - recursion
     public static long fib1(long number) {
-        if (number <= 1) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Fibonacci calculation is only supported for positive numbers");
+        } else if (number == 1 || number == 0) {
             return number;
         } else {
             return fib1(number - 1) + fib1(number - 2);
@@ -18,8 +16,10 @@ public class Main {
     //version 2 - cycle without memory optimization
     public static long fib2(long number) {
         long result = 0;
-        if (number <= 1) {
-             result = number;
+        if (number < 0) {
+            throw new IllegalArgumentException("Fibonacci calculation is only supported for positive numbers");
+        } else if (number == 1 || number == 0) {
+            result = number;
         } else {
             long a = 0;
             long b = 1;
@@ -38,7 +38,9 @@ public class Main {
 
     //version 3 - cycle with memory optimization
     public static long fib3(long number) {
-        if (number <= 1) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Fibonacci calculation is only supported for positive numbers");
+        } else if (number == 1 || number == 0) {
             return number;
         } else {
             long a = 0;
@@ -51,9 +53,9 @@ public class Main {
         }
     }
 
-    //version 5 - using the Binet formula (на больших величинах теряется точность)
+    //version 5 - using the Binet formula (at large values accuracy may be lost)
     public static long fib5(long number) {
-        return round(pow((1 + sqrt(5))/2, number)/sqrt(5));
+        return round(pow((1 + sqrt(5)) / 2, number) / sqrt(5));
     }
 
 }
